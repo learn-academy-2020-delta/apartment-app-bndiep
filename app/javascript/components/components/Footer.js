@@ -1,8 +1,7 @@
 import React from "react"
 import {
     Nav,
-    NavItem,
-    NavLink
+    NavItem
 } from 'reactstrap'
 
 class Footer extends React.Component {
@@ -18,10 +17,10 @@ class Footer extends React.Component {
             <div id="footer">
                 <Nav>
                     <NavItem>
-                        <NavLink href="/">Home</NavLink>
+                        <a href="/">Home</a>
                     </NavItem>
                     <NavItem>
-                        <NavLink href="/apartmentindex"> All the Apartments</NavLink>
+                        <a href="/apartmentindex"> All the Apartments</a>
                     </NavItem>
                     { logged_in &&
                         <NavItem>
