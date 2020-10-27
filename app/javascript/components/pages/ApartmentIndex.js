@@ -1,5 +1,6 @@
-import React from "react"
-
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'reactstrap'
 class ApartmentIndex extends React.Component {
     render () {
         console.log(this.props.apartments)
@@ -12,6 +13,11 @@ class ApartmentIndex extends React.Component {
                         <h5>{ apartment.street }</h5>
                         <h5>{ apartment.city }</h5>
                         <h5>{ apartment.state }</h5>
+                        <NavLink to={`/apartmentshow/${ apartment.id }`}>
+                            <Button>
+                                View Apartment
+                            </Button>
+                        </NavLink>
                     </div>
                 )
             })}

@@ -1,5 +1,6 @@
-import React from "react"
-
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'reactstrap'
 class ApartmentShow extends React.Component {
     render () {
         console.log(this.props.apartment)
@@ -16,6 +17,11 @@ class ApartmentShow extends React.Component {
             <p>Bedrooms: { apartment.bedrooms }</p>
             <p>Bathrooms: { apartment.bathrooms }</p>
             <p>Pets allowed: { apartment.pets }</p>
+            <NavLink to={'/apartmentindex'}>
+                <Button>
+                    Back to All Apartments
+                </Button>
+            </NavLink>
         </React.Fragment>
         )
     }
