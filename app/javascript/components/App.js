@@ -21,6 +21,7 @@ class App extends React.Component {
     const {
       logged_in,
       sign_in_route,
+      sign_up_route,
       sign_out_route
     } = this.props
     return (
@@ -46,7 +47,12 @@ class App extends React.Component {
               <Route path="/apartmentshow/:id" component={ ApartmentShow } />
               <Route component={ NotFound } />
             </Switch>
-          <Footer />
+          <Footer
+            logged_in={ logged_in }
+            sign_in_route={ sign_in_route }
+            sign_up_route={ sign_up_route }
+            sign_out_route={ sign_out_route }
+            />
         </Router>
       </React.Fragment>
     );
