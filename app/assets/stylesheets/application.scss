@@ -1,4 +1,9 @@
 @import 'bootstrap';
+/* ----- BODY ----- */
+body {
+    background-color: #B56576;
+    color: white;
+}
 
 /* ---- FOOTER ---- */
 .nav {
@@ -9,4 +14,14 @@
     bottom: 0;
     width: 100%;
     padding: 5px;
+    background-color: #355070;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #EAAC8B;
 }

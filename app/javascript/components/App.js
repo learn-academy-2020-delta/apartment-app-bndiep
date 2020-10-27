@@ -19,7 +19,7 @@ import NotFound from './pages/NotFound'
 import mockApartments from './mockApartments.js'
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       apartments: mockApartments
@@ -45,7 +45,17 @@ class App extends React.Component {
               <Route path="/apartmentedit/:id" component={ ApartmentEdit } />
               
               <Route path="/apartmentnew" component={ ApartmentNew } />
-              <Route path="/apartmentshow/:id" component={ ApartmentShow } />
+
+              <Route path="/apartmentshow/:id"
+                render={ (props) => {
+                  let id = props.match.params.id
+                  let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
+                  return (
+                    <ApartmentShow apartment={ apartment }/>
+                  )
+                  }
+                }
+              />
               <Route component={ NotFound } />
             </Switch>
           <Footer
