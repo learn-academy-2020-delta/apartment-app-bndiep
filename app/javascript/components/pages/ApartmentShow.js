@@ -17,6 +17,11 @@ class ApartmentShow extends React.Component {
             <p>Bedrooms: { apartment.bedrooms }</p>
             <p>Bathrooms: { apartment.bathrooms }</p>
             <p>Pets allowed: { apartment.pets }</p>
+            <NavLink to={`/apartmentedit/${ apartment.id }`}>
+                <Button>
+                    Edit Apartment Info
+                </Button>
+            </NavLink>
             <NavLink to={'/apartmentindex'}>
                 <Button>
                     Back to All Apartments
