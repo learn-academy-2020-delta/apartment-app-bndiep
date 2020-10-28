@@ -39,13 +39,13 @@ body {
     top: 80%;
     max-width: 300px;
     background: #222;
-    // -webkit-box-shadow: 0 15px 10px #222;
-    // -moz-box-shadow: 0 15px 10px #222;
+    -webkit-box-shadow: 0 15px 10px #222;
+    -moz-box-shadow: 0 15px 10px #222;
     box-shadow: 0 15px 10px #222;
-    // -webkit-transform: rotate(-3deg);
-    // -moz-transform: rotate(-3deg);
-    // -o-transform: rotate(-3deg);
-    // -ms-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
     transform: rotate(-3deg);
 }
     
@@ -54,7 +54,14 @@ body {
 }
 
 /* ----- SHOW ----- */
-
+#apt-show {
+    margin: auto;
+    padding: 40px 20px;
+    width: 500px;
+    position: relative;
+    background-color: #fff;
+    color: #355070;
+}
 
 /* ----- NOT FOUND ----- */
 #error {

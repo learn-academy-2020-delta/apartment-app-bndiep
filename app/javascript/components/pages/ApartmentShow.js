@@ -8,25 +8,28 @@ class ApartmentShow extends React.Component {
         return (
         <React.Fragment>
             <h3>Show Apartment</h3>
-            <p>Street: { apartment.street }</p>
-            <p>City: { apartment.city }</p>
-            <p>State: { apartment.state }</p>
-            <p>Manager: { apartment.manager }</p>
-            <p>Manager's email: { apartment.email }</p>
-            <p>Price: { apartment.price }</p>
-            <p>Bedrooms: { apartment.bedrooms }</p>
-            <p>Bathrooms: { apartment.bathrooms }</p>
-            <p>Pets allowed: { apartment.pets }</p>
-            <NavLink to={`/apartmentedit/${ apartment.id }`}>
-                <Button>
-                    Edit Apartment Info
-                </Button>
-            </NavLink>
-            <NavLink to={'/apartmentindex'}>
-                <Button>
-                    Back to All Apartments
-                </Button>
-            </NavLink>
+            <div id="apt-show">
+                <p>Street: { apartment.street }</p>
+                <p>City: { apartment.city }</p>
+                <p>State: { apartment.state }</p>
+                <p>Manager: { apartment.manager }</p>
+                <p>Manager's email: { apartment.email }</p>
+                <p>Price: ${ apartment.price }</p>
+                <p>Bedrooms: { apartment.bedrooms }</p>
+                <p>Bathrooms: { apartment.bathrooms }</p>
+                <p>Pets allowed: { apartment.pets }</p>
+                <NavLink to={`/apartmentedit/${ apartment.id }`}>
+                    <Button>
+                        Edit Apartment Info
+                    </Button>
+                </NavLink>
+                <NavLink to={'/apartmentindex'}>
+                    <Button>
+                        Back to All Apartments
+                    </Button>
+                </NavLink>
+            </div>
+            
         </React.Fragment>
         )
     }

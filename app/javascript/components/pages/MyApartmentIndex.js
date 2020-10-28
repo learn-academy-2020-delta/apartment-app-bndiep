@@ -6,7 +6,7 @@ class MyApartmentIndex extends Component {
     render() {
         return(
             <React.Fragment>
-                <h2>All Available Apartments</h2>
+                <h2>All Your Apartments</h2>
                 <div id="all-apts">
                     { this.props.apartments.map((apartment, index)=> {
                     return(
