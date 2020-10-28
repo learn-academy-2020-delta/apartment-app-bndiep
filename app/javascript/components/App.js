@@ -73,7 +73,7 @@ class App extends React.Component {
 
               {/* Protected Routes */}
               { logged_in && 
-                <Route path="/apartmentindex" render={ (props) => {
+                <Route path="/myapartmentindex" render={ (props) => {
                   let user = current_user.id
                   console.log(user)
                   let apartments = this.state.apartments.filter(apartment => apartment.user_id === user)
@@ -98,7 +98,7 @@ class App extends React.Component {
               
               { logged_in &&
                 <Route path="/apartmentnew" render={ (props) => <ApartmentNew
-                  createNewApt={ this.createNewApartment }
+                  createNewApartment={ this.createNewApartment }
                   current_user={ current_user } /> 
                 } />
               }
