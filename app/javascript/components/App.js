@@ -25,6 +25,11 @@ class App extends React.Component {
       apartments: mockApartments
     }
   }
+
+  createNewApartment = (newApartment) => {
+    console.log(newApartment)
+  }
+
   render () {
     const {
       logged_in,
@@ -36,16 +41,27 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Router>
-          <h1>Apartment App</h1>
-          <Header />
+          <h1>Apartment Finder</h1>
+          <Header
+            logged_in={ logged_in }
+            sign_in_route={ sign_in_route }
+            sign_up_route={ sign_up_route }
+            sign_out_route={ sign_out_route }
+          />
             <Switch>
               <Route exact path="/" component={ Home } />
+
               <Route path="/apartmentindex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
               
               <Route path="/apartmentedit/:id" component={ ApartmentEdit } />
               
-              <Route path="/apartmentnew" component={ ApartmentNew } />
-
+              { logged_in &&
+                <Route path="/apartmentnew" render={ (props) => <ApartmentNew
+                  createNewApt={ this.createNewApartment }
+                  current_user={ current_user } /> 
+                } />
+              }
+              
               <Route path="/apartmentshow/:id"
                 render={ (props) => {
                   let id = props.match.params.id
@@ -56,6 +72,7 @@ class App extends React.Component {
                   }
                 }
               />
+
               <Route component={ NotFound } />
             </Switch>
           <Footer

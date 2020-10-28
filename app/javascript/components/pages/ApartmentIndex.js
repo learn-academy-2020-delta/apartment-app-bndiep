@@ -7,20 +7,23 @@ class ApartmentIndex extends React.Component {
         return (
         <React.Fragment>
             <h2>All Available Apartments</h2>
-            { this.props.apartments.map((apartment, index)=> {
+            <div id="all-apts">
+                { this.props.apartments.map((apartment, index)=> {
                 return(
-                    <div key={ index }>
+                    <div className="apt-card" key={ index }>
                         <h5>{ apartment.street }</h5>
                         <h5>{ apartment.city }</h5>
                         <h5>{ apartment.state }</h5>
                         <NavLink to={`/apartmentshow/${ apartment.id }`}>
-                            <Button>
+                            <Button className="view-apt">
                                 View Apartment
                             </Button>
                         </NavLink>
                     </div>
-                )
-            })}
+                    )
+                })}
+            </div>
+            
         </React.Fragment>
         )
     }
