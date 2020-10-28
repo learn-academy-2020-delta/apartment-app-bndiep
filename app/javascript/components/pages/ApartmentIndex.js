@@ -23,7 +23,6 @@ class ApartmentIndex extends React.Component {
                     )
                 })}
             </div>
-            
         </React.Fragment>
         )
     }

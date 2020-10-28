@@ -22,7 +22,7 @@ class ApartmentNew extends React.Component {
                 bedrooms: "",
                 bathrooms: "",
                 pets: "", 
-                user_id: this.props.current_user
+                user_id: this.props.current_user.id
             },
             success: false
         }

@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 import {
   BrowserRouter as Router,
@@ -30,6 +30,10 @@ class App extends React.Component {
     console.log(newApartment)
   }
 
+  updateApartment = (apartment, id) => {
+    console.log("apartment:", apartment, "id:", id)
+  }
+
   render () {
     const {
       logged_in,
@@ -53,7 +57,27 @@ class App extends React.Component {
 
               <Route path="/apartmentindex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
               
-              <Route path="/apartmentedit/:id" component={ ApartmentEdit } />
+              { logged_in && 
+                <Route path="/apartmentindex" render={ (props) => {
+                  let user = current_user.id
+                  console.log(user)
+                  let apartment = this.state.apartments.filter(apartment => apartment.id === user)
+                  console.log(apartment)
+                  return(
+                    <MyApartmentIndex />
+                  )
+                  }
+                } />
+              }
+
+
+              <Route path="/apartmentedit/:id" render={  (props_ => {
+                let id = props.match.params.id
+                let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
+                return (
+                  <ApartmentEdit apartment={ apartment } />
+                )
+              } ) } />
               
               { logged_in &&
                 <Route path="/apartmentnew" render={ (props) => <ApartmentNew
