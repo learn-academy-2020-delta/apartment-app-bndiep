@@ -27,8 +27,41 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.apartmentIndex()
+  }
+
+  apartmentIndex = () => {
+    fetch("/apartments")
+    .then(response => {
+      return response.json()
+    })
+    .then(payload => {
+      this.setState({ apartments: payload})
+    })
+    .catch(errors => {
+      console.log("index errors: ", errors)
+    })
+  }
+
   createNewApartment = (newApartment) => {
     console.log(newApartment)
+    return fetch("/apartments", {
+      body: JSON.stringify(newApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if(response.status === 200) {
+        this.apartmentIndex()
+      }
+      return response
+    })
+    .catch(errors => {
+      console.log("create errors: ", errors)
+    })
   }
 
   updateApartment = (apartment, id) => {
