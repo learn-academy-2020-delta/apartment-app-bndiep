@@ -50,7 +50,24 @@ body {
 }
     
 .view-button {
-    background-color: #E56B6F !important;
+    background-color: #E56B6F;
+    border: 1px solid #fff;
+}
+
+.view-button:hover {
+    background-color: #fff;
+    color: #E56B6F;
+    border: 1px solid #E56B6F;
+}
+
+.remove {
+    color: #222;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.remove:hover {
+    text-decoration: underline;
 }
 
 /* ----- SHOW ----- */
@@ -63,6 +80,44 @@ body {
     color: #355070;
 }
 
+.index-button {
+    background-color: #E56B6F;
+    border: 1px solid #fff;
+    margin: 5px 0px;
+}
+
+.index-button:hover {
+    background-color: #fff;
+    color: #E56B6F;
+    border: 1px solid #E56B6F;
+    margin: 5px 0px;
+}
+
+.edit-button {
+    background-color: #355070;
+    border: 1px solid #fff;
+    margin-bottom: 30px;
+}
+
+.edit-button:hover {
+    background-color: #fff;
+    color: #355070;
+    border: 1px solid #355070;
+}
+
+/* ----- EDIT ----- */
+.cancel-button {
+    background-color: #222;
+    border: 1px solid white;
+    margin: 0px 5px;
+    margin-bottom: 30px;
+}
+
+.cancel-button:hover {
+    background-color: #fff;
+    color: #222;
+}
+
 /* ----- NOT FOUND ----- */
 #error {
     width: auto;
@@ -71,29 +126,40 @@ body {
 
 /* ----- NEW ----- */
 .form {
-    margin: 30px;
+    margin: auto;
     padding: 30px;
     border: 3px solid #fff;
     background-color: #E56B6F;
+    width: 75%;
 }
 
-.input:focus {
-    background-color: palegoldenrod;
+.submit-new-button {
+    background-color: #355070;
+    border: 1px solid #fff;
+    margin-bottom: 30px;
+}
+
+.submit-new-button:hover {
+    background-color: #fff;
+    color: #355070;
+    border: 1px solid #355070;
 }
 /* ----- HEADER ----- */
-.header {
+#header {
     display: flex;
-    align-content: flex-end;
-    justify-content: space-around;
-    position: fixed;
-    top: 0;
+    justify-content: flex-end;
+    position: sticky;
     width: 100%;
     padding: 5px;
     background-color: #355070;
 }
 
+a {
+    margin: 0px 20px;
+}
+
 /* ---- FOOTER ---- */
-.nav {
+#footer {
     display: flex;
     align-content: flex-end;
     justify-content: space-around;

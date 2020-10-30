@@ -14,21 +14,21 @@ class Header extends React.Component {
         } = this.props
         return (
             <React.Fragment>
-                <div id="header">
-                    <Nav>
-                        <NavItem>
+                <div>
+                    <Nav id="header">
+                        {/* <NavItem>
                             <a href="/">Home</a>
                         </NavItem>
                         <NavItem>
                             <a href="/apartmentindex"> All the Apartments</a>
-                        </NavItem>
+                        </NavItem> */}
                         { logged_in &&
                             <>
                                 <NavItem>
-                                    <a href={ sign_out_route }>Sign Out</a>
+                                    <a href="/apartmentnew">Add a New Apartment</a>
                                 </NavItem>
                                 <NavItem>
-                                    <a href="/apartmentnew">Add a New Apartment</a>
+                                    <a href={ sign_out_route }>Sign Out</a>
                                 </NavItem>
                             </>
                         }

@@ -35,8 +35,8 @@ class ApartmentEdit extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createNewApartment(this.state.form)
-        this.setState({ succes: true })
+        this.props.updateApartment(this.state.form, this.props.apartment.id)
+        this.setState({ success: true })
     }
 
     render () {
@@ -87,7 +87,7 @@ class ApartmentEdit extends React.Component {
                 <FormGroup>
                     <Label for="price">Price: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="price"
                         onChange={ this.handleChange }
                         value= { this.state.form.price } />
@@ -95,7 +95,7 @@ class ApartmentEdit extends React.Component {
                 <FormGroup>
                     <Label for="bedrooms">Bedrooms: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="bedrooms"
                         onChange={ this.handleChange }
                         value= {this.state.form.bedrooms} />
@@ -103,7 +103,7 @@ class ApartmentEdit extends React.Component {
                 <FormGroup>
                     <Label for="bathrooms">Bathrooms: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="bathrooms"
                         onChange={ this.handleChange }
                         value= { this.state.form.bathrooms } />
@@ -136,19 +136,20 @@ class ApartmentEdit extends React.Component {
                     </FormGroup>
                 </FormGroup>
                 <Button
+                    className="edit-button"
                     name="submit"
                     onClick={ this.handleSubmit }
                 >
                     Edit Apartment
                 </Button>
                 <NavLink to={'/apartmentindex'}>
-                    <Button>
+                    <Button className="cancel-button">
                         Cancel
                     </Button>
                 </NavLink>
             </Form>
             { this.state.success &&
-                <Redirect to="/apartmentindex" /> }
+                <Redirect to="/myapartmentindex" /> }
         </React.Fragment>
         )
     }

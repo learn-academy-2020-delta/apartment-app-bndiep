@@ -5,9 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = [
+    {
+        email: "test@test.com",
+        password: "testing",
+        password_confirmation: "testing"
+    }
+]
+
+user.each do |attribute|
+    User.create attribute
+end
+
 apartments = [
     {
-        id: 1,
         street: "221B Baker St",
         city: "London",
         state: "UK",
@@ -16,11 +27,9 @@ apartments = [
         price: "1000",
         bedrooms: 2,
         bathrooms: 2,
-        pets: "no",
-        user_id: 1
+        pets: "no"
     },
     {
-        id: 2,
         street: "32 Windsor Gardens",
         city: "London",
         state: "UK",
@@ -29,11 +38,9 @@ apartments = [
         price: "1500",
         bedrooms: 4,
         bathrooms: 2,
-        pets: "yes",
-        user_id: 1
+        pets: "yes"
     },
     {
-        id: 3,
         street: "186 Fleet Street",
         city: "London",
         state: "UK",
@@ -42,12 +49,13 @@ apartments = [
         price: "2500",
         bedrooms: 2,
         bathrooms: 1,
-        pets: "yes",
-        user_id: 2
+        pets: "yes"
     }
 ]
 
-apartments.each do |attributes|
-    Apartment.create attributes
-    puts "creating apartment #{ attributes }"
+test_user = User.first
+
+apartments.each do |attribute|
+    test_user.apartments.create attribute
+    puts "creating apartment: #{ attribute }"
 end

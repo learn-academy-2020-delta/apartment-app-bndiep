@@ -4,11 +4,11 @@ import { Button } from 'reactstrap'
 class ApartmentShow extends React.Component {
     render () {
         console.log(this.props.apartment)
-        const { apartment } = this.props
+        const { apartment, logged_in } = this.props
         return (
         <React.Fragment>
-            <h3>Show Apartment</h3>
             <div id="apt-show">
+                <h3>{ apartment.street } Apartment</h3>
                 <p>Street: { apartment.street }</p>
                 <p>City: { apartment.city }</p>
                 <p>State: { apartment.state }</p>
@@ -18,16 +18,30 @@ class ApartmentShow extends React.Component {
                 <p>Bedrooms: { apartment.bedrooms }</p>
                 <p>Bathrooms: { apartment.bathrooms }</p>
                 <p>Pets allowed: { apartment.pets }</p>
-                <NavLink to={`/apartmentedit/${ apartment.id }`}>
-                    <Button>
-                        Edit Apartment Info
-                    </Button>
-                </NavLink>
-                <NavLink to={'/apartmentindex'}>
-                    <Button>
-                        Back to All Apartments
-                    </Button>
-                </NavLink>
+
+                { logged_in &&
+                    <div>
+                        <NavLink to={`/apartmentedit/${ apartment.id }`}>
+                            <Button className="edit-button">
+                                Edit Apartment Info
+                            </Button>
+                        </NavLink>
+                        <NavLink to={'/apartmentindex'}>
+                            <Button className="index-button">
+                                Back to All Apartments
+                            </Button>
+                        </NavLink>
+                    </div>
+                }
+
+                { !logged_in && 
+                    <NavLink to={'/apartmentindex'}>
+                        <Button className="index-button">
+                            Back to All Apartments
+                        </Button>
+                    </NavLink>
+                }
+                
             </div>
             
         </React.Fragment>

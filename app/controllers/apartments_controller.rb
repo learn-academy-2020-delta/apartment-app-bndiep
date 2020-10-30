@@ -14,7 +14,7 @@ class ApartmentsController < ApplicationController
     end
 
     def update
-        apartment = Apartment.find(params[:id])
+        apartment = current_user.apartments.find(params[:id])
         apartment.update(apartment_params)
         if apartment.valid?
             render json: apartment
@@ -24,7 +24,7 @@ class ApartmentsController < ApplicationController
     end
 
     def destroy
-        apartment = Apartment.find(params[:id])
+        apartment = current_user.apartments.find(params[:id])
         if apartment.destroy
             render json: apartment
         else

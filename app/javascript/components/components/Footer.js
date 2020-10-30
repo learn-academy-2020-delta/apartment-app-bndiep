@@ -14,8 +14,8 @@ class Footer extends React.Component {
         } = this.props
         return (
             <React.Fragment>
-                <div id="footer">
-                    <Nav>
+                <div>
+                    <Nav id="footer">
                         <NavItem>
                             <a href="/">Home</a>
                         </NavItem>

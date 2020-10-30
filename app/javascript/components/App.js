@@ -17,13 +17,13 @@ import ApartmentNew from './pages/ApartmentNew'
 import ApartmentEdit from './pages/ApartmentEdit'
 import NotFound from './pages/NotFound'
 
-import mockApartments from './mockApartments.js'
+// import mockApartments from './mockApartments.js'
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      apartments: mockApartments
+      apartments: []
     }
   }
 
@@ -37,7 +37,7 @@ class App extends React.Component {
       return response.json()
     })
     .then(payload => {
-      this.setState({ apartments: payload})
+      this.setState({ apartments: payload })
     })
     .catch(errors => {
       console.log("index errors: ", errors)
@@ -66,6 +66,39 @@ class App extends React.Component {
 
   updateApartment = (apartment, id) => {
     console.log("apartment", apartment, "id", id)
+    return fetch(`/apartments/${ id }`, {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 200) {
+        this.apartmentIndex()
+      }
+      return response
+    })
+    .catch(errors => {
+      console.log("edit errors: ", errors)
+    })
+  }
+
+  deleteApartment = (id) => {
+    return fetch(`/apartments/${ id }`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      alert("Remove this listing?")
+      this.apartmentIndex()
+      return response
+    })
+    .catch(errors => {
+      console.log("delete errors: ", errors)
+    })
   }
 
   render () {
@@ -77,10 +110,11 @@ class App extends React.Component {
       current_user
     } = this.props
     console.log("current user:", current_user)
+    console.log(this.state.apartments)
     return (
       <React.Fragment>
         <Router>
-          <h1>Apartment Finder</h1>
+          <h1>ApartmentApp</h1>
           <Header
             logged_in={ logged_in }
             sign_in_route={ sign_in_route }
@@ -98,7 +132,7 @@ class App extends React.Component {
                   let id = props.match.params.id
                   let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
                   return (
-                    <ApartmentShow apartment={ apartment }/>
+                    <ApartmentShow apartment={ apartment } logged_in={ logged_in} />
                   )
                   }
                 }
@@ -112,7 +146,7 @@ class App extends React.Component {
                   let apartments = this.state.apartments.filter(apartment => apartment.user_id === user)
                   console.log(apartments)
                   return(
-                    <MyApartmentIndex apartments={ apartments } />
+                    <MyApartmentIndex apartments={ apartments } deleteApartment={ this.deleteApartment } />
                   )
                   }
                 } />

@@ -37,7 +37,7 @@ class ApartmentNew extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.createNewApartment(this.state.form)
-        this.setState({ succes: true })
+        this.setState({ success: true })
     }
 
     render () {
@@ -88,7 +88,7 @@ class ApartmentNew extends React.Component {
                 <FormGroup>
                     <Label for="price">Price: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="price"
                         onChange={ this.handleChange }
                         value= { this.state.form.price } />
@@ -96,7 +96,7 @@ class ApartmentNew extends React.Component {
                 <FormGroup>
                     <Label for="bedrooms">Bedrooms: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="bedrooms"
                         onChange={ this.handleChange }
                         value= {this.state.form.bedrooms} />
@@ -104,7 +104,7 @@ class ApartmentNew extends React.Component {
                 <FormGroup>
                     <Label for="bathrooms">Bathrooms: </Label>
                     <Input 
-                        type="text"
+                        type="number"
                         name="bathrooms"
                         onChange={ this.handleChange }
                         value= { this.state.form.bathrooms } />
@@ -137,6 +137,7 @@ class ApartmentNew extends React.Component {
                     </FormGroup>
                 </FormGroup>
                 <Button
+                    className="submit-new-button"
                     name="submit"
                     onClick={ this.handleSubmit }
                 >
@@ -144,7 +145,7 @@ class ApartmentNew extends React.Component {
                 </Button>
             </Form>
             { this.state.success &&
-                <Redirect to="/apartmentindex" /> }
+                <Redirect to="/myapartmentindex" /> }
         </React.Fragment>
         )
     }
